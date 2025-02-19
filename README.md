@@ -47,5 +47,5 @@ Ensure you have the following installed:
 
 ### 🔹 Clone the Repository
 ```sh
-git clone https://github.com/your-username/attendance-system-face-recognition.git
+git clone https://github.com/princedmello/attendance-system-face-recognition.git
 cd attendance-system-face-recognition
