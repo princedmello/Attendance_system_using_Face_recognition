@@ -1,0 +1,54 @@
+{% extends 'Attendence_Sys/main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+ margin-top: 150px;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="flex-container">
+  <div style='box-shadow:2px black'>
+      
+<img src="{% static 'images/TakeAttendence.jpg' %}" height="150px" width="250px">    
+      
+      <br>
+      <a href='{% url "TakeAttendence" %}'>Take Attendance</a>
+    
+    </div>
+  <div><a href='{% url "SearchAttendence" %}'>Search Attendance</a>
+</div>
+  <div><a href='{% url "Defaulters" %}'>Generate Defaulter's List</a>
+</div>  
+    
+    
+    <div><a href='{% url "AttendenceReports" %}'>Generate Attendance Report</a>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+{% endblock %}

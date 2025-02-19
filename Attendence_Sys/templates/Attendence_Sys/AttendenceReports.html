@@ -1,0 +1,88 @@
+{% extends 'Attendence_Sys/main.html' %}
+{% block content %}
+{% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endif %}
+	{% endfor %}
+{% if ta == False %}
+<center><h1>Attendence Reports</h1></center>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<center>
+				<form method="get">
+					{{myFilter.form}}
+
+		    		<button class="btn btn-primary" type="submit">Search</button>
+				</form>
+			</center>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+						<th>Student ID</th>
+						<th>Present Lectures</th>
+						<th>Total Lectures Conducted</th>
+						<th>Attendance Percentage</th>
+											</tr>
+	
+					{% for report in reports %}
+	
+					<tr>
+						<td>{{ report.student_id }}</td>
+						<td>{{ report.count }}</td>
+						<td>{{ report.total }}</td>
+						<td>{{ report.percentage }}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+{% else %}
+	<center><h1>Defaulter's List</h1></center>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card card-body">
+				<table class="table table-sm">
+					<tr>
+						<th>Student ID</th>
+						<th>Present Lectures</th>
+						<th>Total Lectures Conducted</th>
+						<th>Attendance Percentage</th>
+											</tr>
+	
+					{% for report in reports %}
+	
+					<tr>
+						<td>{{report.student_id}}</td>
+						<td>{{report.count }}</td>
+						<td>{{ report.total }}</td>
+						<td>{{ report.percentage }}</td>
+						
+					</tr>
+					{% endfor %}
+	
+				</table>
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+
+{% endblock %}

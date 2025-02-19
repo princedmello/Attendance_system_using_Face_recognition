@@ -1,0 +1,122 @@
+{% extends 'Attendence_Sys/mainStudent.html' %}
+
+{% block content %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Add Student</title>
+    
+    
+    <style> 
+ .forgot {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #E1BEE7;
+        padding-top: 15px;
+            text-align: center;
+    }
+     body {
+        background-color: #F3EBF6;
+        font-family: 'Ubuntu', sans-serif;
+    }
+		
+    
+    </style>
+    
+    </head>
+    
+    
+    
+<body>    
+<div class="container">
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    
+    
+    
+
+    
+    
+    <div class="col-md-6" style="margin-top: 20px; margin-left:25%">
+            <div class="card card-body">
+                <center><h3>Add Student</h3></center>
+                <br>
+                <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Enter First Name:</label>
+                                {{ studentForm.firstname }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Enter Last Name:</label>
+                                {{ studentForm.lastname }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Enter Roll Number:</label>
+                                {{ studentForm.registration_id }}
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="sel1">Select Branch:</label>
+                                {{ studentForm.branch }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="sel1">Select Year:</label>
+                                {{ studentForm.year }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="sel1">Select Section:</label>
+                                {{ studentForm.section }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group" style="border: none;">
+                                <label class="control-label">Upload Profile Picture:</label>
+                                {{ studentForm.profile_pic }}
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-info">Submit</button>    
+                </form>
+            </div>
+        </div>
+    </div>
+    </body></html>
+
+{% endblock %}
+    
+    

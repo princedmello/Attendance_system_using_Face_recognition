@@ -1,0 +1,157 @@
+
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+    #add,#update, #reports{
+        display:block;
+        float:left;
+        margin-top:200px;
+         width:27%;
+        height:320px;
+        margin-left:50px;
+       
+    }
+    img, #add h2, #update h2{
+        margin-left:60px;
+    }
+
+
+
+
+
+
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #111;
+margin-top:-10px;
+    width:101%;
+    height:50px;
+}
+
+
+    
+    
+    .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.1s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.1s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+    
+</style>
+</head>
+<body>
+
+    
+  
+    
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="{%url 'AddStudent' %}">Enroll Student</a>
+  <a href="{%url 'UpdateStudent' %}">Update Details</a>
+  <a href='{% url "MyAttendence" %}'>Attendance Reports</a>
+  <a href="{% url 'studentlogout' %}">Logout</a>
+</div>
+    <div class='navbar'> <span class='2' style="font-size:30px;cursor:pointer;margin-left: 2%;color:white;margin-top: 2px" onclick="openNav()">&#9776; Menu</span>
+    
+        <span style='color:white;margin-left:75%;font-size:30px;'><i>Hello,{{request.user}}</i></span>
+    
+    </div>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "350px";
+     document.getElementById('add').style.marginLeft='25%';
+    document.getElementById('add').style.width='20%';
+        document.getElementById('update').style.width='20%';
+        document.getElementById('reports').style.width='20%';
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+    document.getElementById('add').style.marginLeft='50px';
+    document.getElementById('add').style.width='27%';
+        document.getElementById('update').style.width='27%';
+        document.getElementById('reports').style.width='27%';
+}
+    </script>
+<div id='add'><a href="{%url 'AddStudent' %}"><img src="{% static 'images/3.jpg' %}" alt='sbd' style='height:250px;width:250px'></a>
+    <h2>Enroll Student</h2></div>
+
+    
+    <div id='update'><a href="{%url 'UpdateStudent' %}"><img src="{% static 'images/5.jfif' %}" alt='sbd' style='height:250px;width:250px'/></a>
+    <h2>Update Details</h2></div>
+
+        
+    <div id='reports'><a href='{% url "MyAttendence" %}'><img src="{% static 'images/6.png' %}" alt='sbd' style='height:250px;width:250px'/></a>
+    <h2 style='margin-left: 60px;'>Attendance Reports</h2></div>
+
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

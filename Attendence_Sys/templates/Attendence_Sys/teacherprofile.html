@@ -1,0 +1,165 @@
+
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+    
+    
+
+
+    #take,#search,#defaulters,#reports{
+        display: block;
+        float:left;
+        margin-top:50px;
+        width:40%;
+        height:250px;
+        margin-left:100px;
+    }
+    #defaulters,#reports{
+        margin-top: 100px;
+    }
+
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #111;
+margin-top:-10px;
+    width:101%;
+    height:50px;
+    margin-left:-0.7%;
+}
+
+
+    
+    
+    .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.1s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.1s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+    
+</style>
+</head>
+<body>
+
+    
+  
+    
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="{%url 'account' %}">View Profile</a>
+
+  <a href="{%url 'TakeAttendence' %}">Take Attendance</a>
+  <a href="{%url 'SearchAttendence' %}">Search Attendance</a>
+  <a href='{% url "AttendenceReports" %}'>Attendance Reports</a>
+    <a href='{% url "Defaulters" %}'>Defaulter's List</a>
+  <a href="{% url 'studentlogout' %}">Logout</a>
+</div>
+    <div class='navbar'> <span class='2' style="font-size:30px;cursor:pointer;margin-left: 2%;color:white;margin-top: 2px" onclick="openNav()">&#9776; Menu</span>
+    
+        <span style='color:white;margin-left:70%;font-size:30px;'><i>Hello,{{request.user.faculty}}</i></span>
+    
+    </div>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "350px";
+     document.getElementById('take').style.marginLeft='25%';
+         document.getElementById('reports').style.marginLeft='25%';
+        document.getElementById('search').style.width='25%';
+        document.getElementById('defaulters').style.width='25%';
+
+
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+    document.getElementById('take').style.marginLeft='100px';
+    document.getElementById('reports').style.marginLeft='100px';
+        document.getElementById('search').style.width='40%';
+        document.getElementById('defaulters').style.width='40%';
+}
+    </script>
+<div id='take'><a href="{%url 'TakeAttendence' %}"><img src="{% static 'images/1.jpeg' %}" alt='sbd' style='height:250px;width:250px;margin-left: 150px;'></a>
+    <h2 style='margin-left: 160px;'>Take Attendance</h2></div>
+
+    
+    <div id='search'><a href="{%url 'SearchAttendence' %}"><img src="{% static 'images/10.png' %}" alt='sbd' style='height:250px;width:250px'/></a>
+    <h2>Search Attendance</h2></div>
+
+        
+    <div id='reports'><a href='{% url "AttendenceReports" %}'><img src="{% static 'images/TakeAttendence.jpg' %}" alt='sbd' style='height:250px;width:250px;margin-left: 150px;'/></a>
+    <h2 style='margin-left: 160px;'>Attendance Reports</h2></div>
+     
+    <div id='defaulters'><a href='{% url "Defaulters" %}'><img src="{% static 'images/11.jpg' %}" alt='sbd' style='height:250px;width:250px'/></a>
+    <h2 style='margin-left: 30px;'>Defaulter's List</h2></div>
+
+
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
